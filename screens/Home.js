@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { Color } from "../assets/colors.js";
 import { StyleSheet } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons.js";
@@ -8,8 +8,6 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native";
 import { BigCard } from "../components/BigCard.js";
-import { LinearGradient } from "expo-linear-gradient";
-import { SmallCard } from "../components/SmallCard.js";
 import { Section } from "../components/Section.js";
 
 const bigcardList = [
@@ -73,7 +71,7 @@ const trendingList = [
   },
 ];
 
-export const HomeScreen = () => {
+export const Home = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -121,7 +119,7 @@ export const HomeScreen = () => {
                   }}>
                   <Ionicons
                     name="settings"
-                    size={20}
+                    size={22}
                     color={Color.flat_btn_fg}
                   />
                 </TouchableOpacity>
@@ -137,7 +135,7 @@ export const HomeScreen = () => {
                     return (
                       <TouchableOpacity
                         activeOpacity={0.85}
-                        onPress={() => navigation.navigate("GameInfo")}>
+                        onPress={() => navigation.navigate("GameInfoScreen")}>
                         <BigCard
                           image={item.image}
                           title={item.title}
@@ -149,6 +147,7 @@ export const HomeScreen = () => {
                     );
                   }}
                   ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
+                  keyExtractor={(item) => item.id}
                 />
               </View>
               <View
