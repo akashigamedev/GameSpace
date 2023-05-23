@@ -185,6 +185,7 @@ export const Home = () => {
             </View>
           );
         }}
+        keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );
